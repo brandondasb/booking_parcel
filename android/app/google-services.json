@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "224855509096",
+    "project_id": "booking-system-b5b9f",
+    "storage_bucket": "booking-system-b5b9f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:224855509096:android:51fe759c7cd5a2e96e53dd",
+        "android_client_info": {
+          "package_name": "com.lambostudio.booking_parcel"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "224855509096-tn58p6029883bmm3mp4pgor5i4eertfm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBePayjGBeorsqctiUGuJzVblIz51ybqVg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "224855509096-tn58p6029883bmm3mp4pgor5i4eertfm.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "224855509096-g24jiusikhj4euaaq5q72son8a5mjn2p.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.lambostudio.bookingparcel"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
