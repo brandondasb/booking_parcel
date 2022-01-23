@@ -1,12 +1,12 @@
 import 'package:booking_parcel/explore_view.dart';
-import 'package:booking_parcel/models/Trip.dart';
+import 'package:booking_parcel/models/Order.dart';
 import 'package:booking_parcel/past_trips_view.dart';
 import 'package:booking_parcel/services/auth_service.dart';
 import 'package:booking_parcel/widgets/provider_widget.dart';
 import 'package:flutter/material.dart';
 
 import 'home_view.dart';
-import 'new_trips/location_view.dart';
+import 'new_trips/transport_view.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -25,7 +25,8 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    final newTrip = Trip("", DateTime.now(), DateTime.now(), 200, "car");
+    final newTrip = Order(
+        "", DateTime.now(), DateTime.now(), 200, "car", "Congo", <Item>[]);
     return Scaffold(
       appBar: AppBar(
         title: const Text("FL"),
@@ -37,7 +38,7 @@ class _HomeState extends State<Home> {
                   context,
                   MaterialPageRoute(
                       builder: (context) =>
-                          NewTripLocationView(trip: newTrip)));
+                          NewOrderTransportView(order: newTrip)));
             },
           ),
           IconButton(

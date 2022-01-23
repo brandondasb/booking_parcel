@@ -1,16 +1,16 @@
 import 'dart:async';
 
 // import 'package:date_range_picker/date_range_picker.dart' as DateRagePicker;
-import 'package:booking_parcel/models/Trip.dart';
+import 'package:booking_parcel/models/Order.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import 'budget_view.dart';
 
 class NewTripDateView extends StatefulWidget {
-  final Trip trip;
+  final Order order;
 
-  const NewTripDateView({Key? key, required this.trip}) : super(key: key);
+  const NewTripDateView({Key? key, required this.order}) : super(key: key);
 
   @override
   State<NewTripDateView> createState() => _NewTripDateViewState();
@@ -91,7 +91,7 @@ class _NewTripDateViewState extends State<NewTripDateView> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text("Location ${widget.trip.title}"),
+              Text("Location ${widget.order.title}"),
               ElevatedButton(
                 onPressed: () async {
                   await displayDateRangePicker(context);
@@ -108,14 +108,14 @@ class _NewTripDateViewState extends State<NewTripDateView> {
               ElevatedButton(
                 child: const Text("Continue"),
                 onPressed: () {
-                  widget.trip.startDate = dateRange.start;
-                  widget.trip.endDate = dateRange.end;
+                  widget.order.startDate = dateRange.start;
+                  widget.order.endDate = dateRange.end;
 
                   Navigator.push(
                     context,
                     MaterialPageRoute(
                         builder: (context) =>
-                            NewTripBudgetView(trip: widget.trip)),
+                            NewOrderBudgetView(order: widget.order)),
                   );
                 },
               )

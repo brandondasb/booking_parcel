@@ -1,19 +1,19 @@
-import 'package:booking_parcel/models/Trip.dart';
+import 'package:booking_parcel/models/Order.dart';
 import 'package:booking_parcel/widgets/provider_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-class NewTripBudgetView extends StatelessWidget {
-  final Trip trip;
+class NewOrderBudgetView extends StatelessWidget {
+  final Order order;
   FirebaseFirestore db = FirebaseFirestore.instance;
 
-  NewTripBudgetView({Key? key, required this.trip}) : super(key: key);
+  NewOrderBudgetView({Key? key, required this.order}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     TextEditingController _titleController = TextEditingController();
-    _titleController.text = trip.title;
+    _titleController.text = order.title;
 
     return Scaffold(
         appBar: AppBar(
@@ -23,10 +23,14 @@ class NewTripBudgetView extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text("Location ${trip.title}"),
+              Text("Order summary ${order.title}"),
+              Text("Sending by ${order.travelType}"),
+              Text("Sending to ${order.sendTo}"),
+              Text("I am sending : ${order.items}"),
               Text(
-                  "Start Date ${DateFormat('dd/MM/yyyy').format(trip.startDate)}"),
-              Text("End Date ${DateFormat('dd/MM/yyyy').format(trip.endDate)}"),
+                  "Start Date ${DateFormat('dd/MM/yyyy').format(order.startDate)}"),
+              Text(
+                  "End Date ${DateFormat('dd/MM/yyyy').format(order.endDate)}"),
               ElevatedButton(
                 child: const Text("Finish"),
                 onPressed: () async {
@@ -36,10 +40,10 @@ class NewTripBudgetView extends StatelessWidget {
                   await db
                       .collection("userData")
                       .doc(uid)
-                      .collection("trips")
-                      // add(trip.toJson());
-                      .doc(DateFormat('dd-MM-yyyy').format(DateTime.now()))
-                      .set(trip.toJson());
+                      .collection("orders")
+                      .add(order.toJson());
+                  // .doc(DateFormat('dd-MM-yyyy').format(DateTime.now()))
+                  // .set(trip.toJson());// should still generate something unique with the date assigned
 
                   Navigator.of(context).popUntil((route) => route.isFirst);
                 },

@@ -1,56 +1,61 @@
-import 'package:booking_parcel/models/Trip.dart';
+import 'package:booking_parcel/models/Order.dart';
+import 'package:booking_parcel/views/new_trips/destination_to_view.dart';
 import 'package:flutter/material.dart';
 
-import 'date_view.dart';
+class NewOrderTransportView extends StatefulWidget {
+  final Order order;
 
-class NewTripLocationView extends StatelessWidget {
-  final Trip trip;
+  const NewOrderTransportView({Key? key, required this.order})
+      : super(key: key);
 
-  const NewTripLocationView({Key? key, required this.trip}) : super(key: key);
+  @override
+  State<NewOrderTransportView> createState() => _NewOrderTransportViewState();
+}
+
+class _NewOrderTransportViewState extends State<NewOrderTransportView> {
+  String currentItemSelected = 'Car';
 
   @override
   Widget build(BuildContext context) {
     TextEditingController _titleController = TextEditingController();
-    String? currentItemSelected = 'Car';
-    _titleController.text = trip.title;
+    _titleController.text = widget.order.title;
 
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Book parcel - select travel'),
+          title: const Text('Booking - select transport'),
         ),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text("Select transport"),
+              const Text("Select transport method"),
               Padding(
                 padding: const EdgeInsets.all(30.0),
                 child: DropdownButton<String>(
+                  value: currentItemSelected,
                   items: <String>['Car', 'Boat', 'flight']
-                      .map((String dropDownStringItem) {
+                      .map<DropdownMenuItem<String>>((String value) {
                     return DropdownMenuItem<String>(
-                      value: dropDownStringItem,
-                      child: Text(
-                        dropDownStringItem,
-                      ),
+                      value: value,
+                      child: Text(value),
                     );
                   }).toList(),
                   onChanged: (String? newItemSelected) {
                     setState(() {
-                      currentItemSelected = newItemSelected;
+                      currentItemSelected = newItemSelected!;
                     });
                   },
-                  value: currentItemSelected,
                 ),
               ),
               ElevatedButton(
                 child: const Text("Continue"),
                 onPressed: () {
-                  trip.title = _titleController.text;
+                  widget.order.travelType = currentItemSelected ?? " ";
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => NewTripDateView(trip: trip)),
+                        builder: (context) =>
+                            NewOrderDestinationView(order: widget.order)),
                   );
                 },
               )
