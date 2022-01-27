@@ -14,6 +14,7 @@ class NewOrderParcelTypeView extends StatefulWidget {
 
 class _NewOrderParcelTypeViewState extends State<NewOrderParcelTypeView> {
   String currentItemSelected = 'small box';
+  List<Item> currentBasket = [];
 
   @override
   Widget build(BuildContext context) {
@@ -107,11 +108,18 @@ class _NewOrderParcelTypeViewState extends State<NewOrderParcelTypeView> {
   Widget getItemsInBasket(List<Item> items) {
     return Column(
         children: items
-            .map((item) => Wrap(children: [
-                  Text(item.name),
-                  Text(item.quantity.toString()),
-                  const Divider(),
-                ]))
+            .map(
+              (item) => Wrap(children: [
+                Image.asset(
+                  'assets/images/box.jpg',
+                  width: 100,
+                  height: 100,
+                ),
+                Text(item.name),
+                Text(item.quantity.toString()),
+                const Divider(),
+              ]),
+            )
             .toList());
   }
 
