@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       auth: AuthService(),
       child: MaterialApp(
         title: 'F Logistics',
-        theme: ThemeData(primarySwatch: Colors.green),
+        theme: ThemeData(primarySwatch: Colors.red),
         // home: Home(),
         home: HomeController(),
         routes: <String, WidgetBuilder>{

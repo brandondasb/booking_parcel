@@ -8,7 +8,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-const primaryColor = const Color(0xFF75A2EA);
+final primaryColor = Colors.red.shade600;
 
 enum AuthFormType { signIn, signUp, reset, anonymous, convert }
 

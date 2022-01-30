@@ -3,7 +3,7 @@ import 'package:booking_parcel/widgets/custom_dialog.dart';
 import 'package:flutter/material.dart';
 
 class FirstView extends StatelessWidget {
-  final primaryColor = const Color(0xFF75A2EA);
+  final primaryColor = Colors.red.shade600;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class FirstView extends StatelessWidget {
                 ),
                 SizedBox(height: _height * 0.10),
                 const AutoSizeText(
-                  "Let's start planning your next trip",
+                  "Let's start planning your next parcel",
                   maxLines: 2,
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 40, color: Colors.white),

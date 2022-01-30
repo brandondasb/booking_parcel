@@ -33,6 +33,7 @@ class _NewOrderDestinationViewState extends State<NewOrderDestinationView> {
               Padding(
                 padding: const EdgeInsets.all(30.0),
                 child: DropdownButton<String>(
+                  isExpanded: true,
                   value: currentItemSelected,
                   items: <String>['Congo', 'Angola']
                       .map<DropdownMenuItem<String>>((String value) {
@@ -48,17 +49,22 @@ class _NewOrderDestinationViewState extends State<NewOrderDestinationView> {
                   },
                 ),
               ),
-              ElevatedButton(
-                child: const Text("Continue"),
-                onPressed: () {
-                  widget.order.sendTo = currentItemSelected;
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            NewOrderParcelTypeView(order: widget.order)),
-                  );
-                },
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      minimumSize: const Size.fromHeight(50)),
+                  child: const Text("Continue"),
+                  onPressed: () {
+                    widget.order.sendTo = currentItemSelected;
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              NewOrderParcelTypeView(order: widget.order)),
+                    );
+                  },
+                ),
               )
             ],
           ),

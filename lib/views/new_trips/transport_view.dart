@@ -30,8 +30,9 @@ class _NewOrderTransportViewState extends State<NewOrderTransportView> {
             children: [
               const Text("Select transport method"),
               Padding(
-                padding: const EdgeInsets.all(30.0),
+                padding: const EdgeInsets.all(16.0),
                 child: DropdownButton<String>(
+                  isExpanded: true,
                   value: currentItemSelected,
                   items: <String>['Car', 'Boat', 'flight']
                       .map<DropdownMenuItem<String>>((String value) {
@@ -47,17 +48,22 @@ class _NewOrderTransportViewState extends State<NewOrderTransportView> {
                   },
                 ),
               ),
-              ElevatedButton(
-                child: const Text("Continue"),
-                onPressed: () {
-                  widget.order.travelType = currentItemSelected ?? " ";
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            NewOrderDestinationView(order: widget.order)),
-                  );
-                },
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: ElevatedButton(
+                  child: const Text("Continue"),
+                  style: ElevatedButton.styleFrom(
+                      minimumSize: const Size.fromHeight(50)),
+                  onPressed: () {
+                    widget.order.travelType = currentItemSelected ?? " ";
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              NewOrderDestinationView(order: widget.order)),
+                    );
+                  },
+                ),
               )
             ],
           ),

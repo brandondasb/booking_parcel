@@ -44,7 +44,6 @@ class NewOrderBudgetView extends StatelessWidget {
                       .add(order.toJson());
                   // .doc(DateFormat('dd-MM-yyyy').format(DateTime.now()))
                   // .set(trip.toJson());// should still generate something unique with the date assigned
-
                   Navigator.of(context).popUntil((route) => route.isFirst);
                 },
               )
