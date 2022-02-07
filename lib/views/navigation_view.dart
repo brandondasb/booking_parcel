@@ -25,8 +25,8 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    final newTrip = Order(
-        "", DateTime.now(), DateTime.now(), 200, "car", "Congo", <Item>[]);
+    final newTrip =
+        Order("", DateTime.now(), false, 200, "car", "Congo", <Item>[]);
     return Scaffold(
       appBar: AppBar(
         title: const Text("FL"),

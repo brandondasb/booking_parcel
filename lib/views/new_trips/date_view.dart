@@ -21,10 +21,7 @@ class _NewTripDateViewState extends State<NewTripDateView> {
 
   DateTime _startDate = DateTime.now();
   DateTime _endDate = DateTime.now().add(Duration(days: 7));
-  DateTimeRange dateRange = DateTimeRange(
-    start: DateTime.now(),
-    end: DateTime.now().add(Duration(days: 7)),
-  );
+  bool readyToCollect = false;
 
   Future displayDateRangePicker(BuildContext context) async {
     // final List<DateTime> picked = await DateRagePicker.showDatePicker(
@@ -62,20 +59,12 @@ class _NewTripDateViewState extends State<NewTripDateView> {
         lastDate: DateTime(DateTime.now().year + 50),
         initialDateRange: initialDateRange);
     if (newDateRange == null) return;
-    setState(() => dateRange = newDateRange);
+    setState(() => _startDate = _startDate);
   }
 
   String getFrom() {
-    if (dateRange != null) {
-      return DateFormat('dd/MM/yyyy').format(dateRange.start);
-    } else {
-      return "from";
-    }
-  }
-
-  String getUntil() {
-    if (dateRange != null) {
-      return DateFormat('dd/MM/yyyy').format(dateRange.end);
+    if (_startDate != null) {
+      return DateFormat('dd/MM/yyyy').format(_startDate);
     } else {
       return "from";
     }
@@ -102,14 +91,13 @@ class _NewTripDateViewState extends State<NewTripDateView> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   Text(getFrom()),
-                  Text(getUntil()),
                 ],
               ),
               ElevatedButton(
                 child: const Text("Continue"),
                 onPressed: () {
-                  widget.order.startDate = dateRange.start;
-                  widget.order.endDate = dateRange.end;
+                  widget.order.startDate = _startDate;
+                  widget.order.rtc = readyToCollect;
 
                   Navigator.push(
                     context,

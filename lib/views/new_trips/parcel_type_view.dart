@@ -1,8 +1,7 @@
 import 'package:booking_parcel/models/Order.dart';
+import 'package:booking_parcel/views/new_trips/parcel_extra_info_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
-import 'budget_view.dart';
 
 class NewOrderParcelTypeView extends StatefulWidget {
   final Order order;
@@ -92,22 +91,6 @@ class _NewOrderParcelTypeViewState extends State<NewOrderParcelTypeView> {
                   },
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                      minimumSize: const Size.fromHeight(50)),
-                  child: const Text("Continue"),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              NewOrderBudgetView(order: widget.order)),
-                    );
-                  },
-                ),
-              ),
             ],
           ),
         ));
@@ -139,7 +122,7 @@ class _NewOrderParcelTypeViewState extends State<NewOrderParcelTypeView> {
                     context,
                     MaterialPageRoute(
                         builder: (context) =>
-                            NewOrderBudgetView(order: widget.order)),
+                            NewOrderParcelExtraInfoView(order: widget.order)),
                   );
                 },
               ),

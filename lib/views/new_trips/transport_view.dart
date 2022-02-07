@@ -13,7 +13,12 @@ class NewOrderTransportView extends StatefulWidget {
 }
 
 class _NewOrderTransportViewState extends State<NewOrderTransportView> {
-  String currentItemSelected = 'Car';
+  String currentItemSelected = 'Boat';
+  static List<String> defaultListOfTransport = <String>[
+    'Boat',
+    'Car',
+    'Flight'
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +39,7 @@ class _NewOrderTransportViewState extends State<NewOrderTransportView> {
                 child: DropdownButton<String>(
                   isExpanded: true,
                   value: currentItemSelected,
-                  items: <String>['Car', 'Boat', 'flight']
+                  items: defaultListOfTransport
                       .map<DropdownMenuItem<String>>((String value) {
                     return DropdownMenuItem<String>(
                       value: value,

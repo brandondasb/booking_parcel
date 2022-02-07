@@ -32,7 +32,7 @@ class _CustomDropdown extends State<CustomDropdown> {
           dropdownValue = newValue!;
         });
       },
-      items: <String>['Car', 'Boat', 'flight']
+      items: <String>['Car', 'Boat', 'Flight']
           .map<DropdownMenuItem<String>>((String value) {
         return DropdownMenuItem<String>(
           value: value,
